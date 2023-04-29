@@ -3,7 +3,7 @@
 """A Script that imports a blueprint and Flask"""
 
 from api.v1.views import app_views
-from flask import flask
+from flask import Flask
 from flask import jsonify
 from os import getenv
 from models import storage
@@ -26,7 +26,7 @@ def not_found_error(error):
 
 
 if __name__ == "__main__":
-    host = getenv('HBNB_API_HOST', default='0.0.0')
+    host = getenv('HBNB_API_HOST', default='0.0.0.0')
     port = getenv('HBNB_API_PORT', default=5000)
 
     app.run(host, int(port), threaded=True)
