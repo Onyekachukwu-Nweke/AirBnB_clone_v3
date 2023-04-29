@@ -11,7 +11,7 @@ from models import storage
 def api_status():
     """a function to return api status"""
 
-return jsonify({"status": "OK"})
+    return jsonify({"status": "OK"})
 
 
 @app_views.route('/stats', strict_slashes=False)
@@ -25,5 +25,5 @@ def obj_stats():
             "reviews": storage.count("Review"),
             "states": storage.count("State"),
             "users": storage.count("User")
-            }
+        }
     return jsonify(my_dict)
