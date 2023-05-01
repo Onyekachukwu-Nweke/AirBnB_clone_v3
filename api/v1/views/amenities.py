@@ -15,7 +15,7 @@ def amenities(amenity_id=None):
     is specified it retrieves only that amenity
     """
     if not amenity_id:
-        amenities = [amenenity.to_dict() for amenity in 
+        amenities = [amenity.to_dict() for amenity in
                      storage.all(Amenity).values()]
         return jsonify(amenities)
     else:
@@ -23,9 +23,9 @@ def amenities(amenity_id=None):
         if not amenity:
             abort(404)
         return jsonify(amenity.to_dict())
-    
 
-@app_views.route('/amenities/<amenity_id>', 
+
+@app_views.route('/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
 def del_amenities(amenity_id):
     """Deletes an amenity"""
@@ -37,7 +37,7 @@ def del_amenities(amenity_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/amenities', 
+@app_views.route('/amenities',
                  methods=['POST'], strict_slashes=False)
 def create_amenity():
     """Creates an amenity"""
@@ -51,7 +51,7 @@ def create_amenity():
     return make_response(jsonify(amenity.to_dict()), 201)
 
 
-@app_views.route('/amenities/<amenity_id>', 
+@app_views.route('/amenities/<amenity_id>',
                  methods=['PUT'], strict_slashes=False)
 def update_amenity(amenity_id):
     """Updates an amenity"""
