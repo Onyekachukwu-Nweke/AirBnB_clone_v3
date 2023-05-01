@@ -3,8 +3,7 @@
 """A Script that imports a blueprint and Flask"""
 
 from api.v1.views import app_views
-from flask import Flask
-from flask import jsonify
+from flask import Flask, jsonify
 from os import getenv
 from models import storage
 
