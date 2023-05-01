@@ -51,7 +51,7 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
-def get(self,cls, id):
+def get(self, cls, id):
     """get an object based on its class and id"""
 
     my_dict = self.all(cls)
