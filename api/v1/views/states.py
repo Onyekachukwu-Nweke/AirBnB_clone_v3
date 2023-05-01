@@ -16,7 +16,7 @@ from models.state import State
 def states(state_id=None):
     """Retrieves a list of state obj"""
 
-    state objs = storage.all(State)
+    state_objs = storage.all(State)
 
     states = [obj.to_dict() for obj in state_objs.values()]
     if not state_id:
@@ -28,7 +28,7 @@ def states(state_id=None):
             if my_dict is None:
                 abort(400, 'Not a JSON')
             if my_dict.get("name") is None:
-                abort(400 'Missing name')
+                abort(400, 'Missing name')
             new_state = State(**my_dict)
             new_state.save()
             return jsonify(new_state.to_dict()), 201
