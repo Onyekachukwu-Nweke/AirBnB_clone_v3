@@ -53,4 +53,3 @@ def amenities(amenity_id=None):
                     storage.save()
                     return jsonify({}), 200
             abort(404)
-            
