@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-Objects that handles all RESTFUL API Functions
-"""
+
+"""Objects that handles all RESTFUL API Functions"""
 
 from api.v1.views import app_views
 from flask import request, jsonify, abort
@@ -43,8 +42,8 @@ def states(state_id=None):
 
             if my_dict is None:
                 abort(400, 'Not a JSON')
-            for state in states_objs.values():
-                if state.id == state.id:
+            for state in state_objs.values():
+                if state.id == state_id:
                     state.name = my_dict.get("name")
                     state.save()
                     return jsonify(state.to_dict()), 200
