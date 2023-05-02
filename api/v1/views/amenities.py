@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
 """Routes for amenities module"""
+
 from api.v1.views import app_views
 from models import storage
 from models.amenity import Amenity
-from flask import jsonify, make_response, abort, request
+from flask import request, jsonify, abort
 
 
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
