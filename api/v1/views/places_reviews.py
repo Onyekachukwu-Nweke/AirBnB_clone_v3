@@ -10,8 +10,8 @@ from models.place import Place
 from models.user import User
 
 
-@app_views.route("/places/<place_id>/reviews/",
-                 methods=["GET"], strict_slashes=False)
+@app_views.route('/places/<place_id>/reviews/',
+                 methods=['GET'], strict_slashes=False)
 def all_reviews(place_id):
     """
     Retrieves the list of all Review objects of a Place.
@@ -30,8 +30,8 @@ def all_reviews(place_id):
         abort(404)
 
 
-@app_views.route("/reviews/<review_id>/",
-                 methods=["GET"], strict_slashes=False)
+@app_views.route('/reviews/<review_id>/',
+                 methods=['GET'], strict_slashes=False)
 def get_review(review_id):
     """
     Retrieves a Review object.
@@ -48,8 +48,8 @@ def get_review(review_id):
         abort(404)
 
 
-@app_views.route("/places/<place_id>/reviews/",
-                 methods=["POST"], strict_slashes=False)
+@app_views.route('/places/<place_id>/reviews/',
+                 methods=['POST'], strict_slashes=False)
 def create_review(place_id):
     """
     Creates a new Review.
@@ -69,7 +69,7 @@ def create_review(place_id):
             elif "text" not in content.keys():
                 error_message = "Missing text"
             else:
-                user = storage.get(User, user_id)
+                user = storage.get(User, content['user_id'])
                 if user:
                     review = Review(**content)
                     review.place_id = place_id
@@ -86,7 +86,7 @@ def create_review(place_id):
         abort(404)
 
 
-@app_views.route("/reviews/<review_id>/", methods=["PUT"],
+@app_views.route('/reviews/<review_id>/', methods=['PUT'],
                  strict_slashes=False)
 def update_review(review_id):
     """Updates a Review object
