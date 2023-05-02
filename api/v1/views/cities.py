@@ -50,12 +50,12 @@ def city_by_city_id(city_id):
         return jsonify(city.to_dict())
     if request.method == 'DELETE':
         storage.delete(city)
-        storgae.save()
+        storage.save()
         return jsonify({}), 200
     if request.method == 'PUT':
         my_dict = request.get_json()
         if my_dict is None:
-            abort(400, 'NOT a JSON')
+            abort(400, 'Not a JSON')
         city.name = my_dict.get("name")
         city.save()
         return jsonify(city.to_dict()), 200
