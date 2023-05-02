@@ -29,10 +29,9 @@ def amenities(amenity_id=None):
             if my_dict.get("name") is None:
                 abort(400, 'Missing name')
             new_amenity = Amenity(**my_dict)
-            new amenity.save()
+            new_amenity.save()
             return jsonify(new_amenity.to_dict()), 201
-          else:
-        if request.method == 'GET':
+        elif request.method == 'GET':
             for amenity in amenities:
                 if amenity.get('id') == amenity_id:
                     return jsonify(amenity)
