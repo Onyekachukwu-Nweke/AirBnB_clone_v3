@@ -47,7 +47,7 @@ def states(state_id=None):
                     state.name = my_dict.get("name")
                     state.save()
                     return jsonify(state.to_dict()), 200
-            abort(400)
+            abort(404)
 
         elif request.method == 'DELETE':
             for obj in state_objs.values():
