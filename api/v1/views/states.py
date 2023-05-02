@@ -35,14 +35,14 @@ def states(state_id=None):
     else:
         if request.method == 'GET':
             for state in states:
-                if state.get(id) == state_id:
+                if state.get('id') == state_id:
                     return jsonify(state)
             abort(404)
         elif request.method == 'PUT':
             my_dict = request.get_json()
 
             if my_dict is None:
-                abort(400, 'NOT a JSON')
+                abort(400, 'Not a JSON')
             for state in states_objs.values():
                 if state.id == state.id:
                     state.name = my_dict.get("name")
