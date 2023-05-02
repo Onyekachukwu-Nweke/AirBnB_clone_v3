@@ -11,7 +11,7 @@ from models import storage
 
 @app_views.route('/states/<state_id>/cities',
                  methods=['GET', 'POST'], strict_slashes=False)
-def cities_methods(state_id):
+def cities__by_state(state_id):
     """retrieve cities based on state_id"""
     state_objs = storage.all(State)
     states = [obj for obj in state_objs.values()]
@@ -23,7 +23,7 @@ def cities_methods(state_id):
                 cities = [obj.to_dict() for obj in
                           cities_objs.values() if obj.state_id == state_id]
                 return jsonify(cities)
-            abort(404)
+        abort(404)
     elif request.method == 'POST':
         for state in states:
             if state.id == state_id:
