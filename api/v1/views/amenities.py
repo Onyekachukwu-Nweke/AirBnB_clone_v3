@@ -61,6 +61,8 @@ def update_amenity(amenity_id):
     elif request.json is None:
         return make_response(jsonify('Not a JSON'), 400)
     for key, value in request.json().items():
-        setattr(amenity, key, value)
+        ignore_keys = ["id", "created_at", "updated_at"]
+        if key not in ignore_keys:
+            setattr(amenity, key, value)
     amenity.save()
     return make_response(jsonify(amenity.to_dict()), 200)
