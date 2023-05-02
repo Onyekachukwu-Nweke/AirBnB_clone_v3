@@ -3,7 +3,7 @@
 from api.v1.views import app_views
 from api.v1.views import *
 from models import storage
-from models.amenity import User
+from models.user import User
 from flask import jsonify, make_response, abort, request
 
 
