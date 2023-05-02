@@ -37,7 +37,7 @@ def states(state_id=None):
             for state in states:
                 if state.get(id) == state_id:
                     return jsonify(state)
-                abort(404)
+            abort(404)
         elif request.method == 'PUT':
             my_dict = request.get_json()
 
@@ -48,11 +48,12 @@ def states(state_id=None):
                     state.name = my_dict.get("name")
                     state.save()
                     return jsonify(state.to_dict()), 200
-                abort(400)
+            abort(400)
 
         elif request.method == 'DELETE':
             for obj in state_objs.values():
-                storage.delete(obj)
-                storage.save()
-                return jsonify({}), 200
+                if obj.id == state_id:
+                    storage.delete(obj)
+                    storage.save()
+                    return jsonify({}), 200
             abort(404)
