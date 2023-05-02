@@ -109,6 +109,6 @@ def update_review(review_id):
             return jsonify(review.to_dict())
 
         else:
-             return make_response(jsonify({"error": "Not a JSON"}), 400)
+            return make_response(jsonify({"error": "Not a JSON"}), 400)
     else:
         abort(404)
