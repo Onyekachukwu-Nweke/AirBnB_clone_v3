@@ -28,14 +28,14 @@ def cities_methods(state_id):
         for state in states:
             if state.id == state_id:
                 my_dict = request.get_json()
-            if my_dict is None:
-                abort(400, 'Not a JSON')
-            if my_dict.get("name") is None:
-                abort(400, 'Missing name')
-            my_dict["state_id"] = state_id
-            city = City(**my_dict)
-            city.save()
-            return jsonify(city.to_dict()), 201
+                if my_dict is None:
+                    abort(400, 'Not a JSON')
+                if my_dict.get("name") is None:
+                    abort(400, 'Missing name')
+                my_dict["state_id"] = state_id
+                city = City(**my_dict)
+                city.save()
+                return jsonify(city.to_dict()), 201
         abort(404)
 
 
