@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Routes for user module"""
 from api.v1.views import app_views
-from api.v1.views import *
 from models import storage
 from models.user import User
 from flask import jsonify, make_response, abort, request
